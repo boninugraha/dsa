@@ -32,6 +32,22 @@ def BFS(tree, target):
     return False
 
 
+def BFS_Flatten_Tree(tree):
+    temp = [tree.root]
+    all_node = []
+
+    while temp:
+        current_node = temp.pop(0)
+        all_node.append(current_node.value)
+        if current_node.left is not None:
+            temp.append(current_node.left)
+
+        if current_node.right is not None:
+            temp.append(current_node.right)
+
+    return all_node
+
+
 if __name__ == "__main__":
 
     my_tree = bst.BinarySearchTree()
@@ -43,6 +59,14 @@ if __name__ == "__main__":
     my_tree.insert(15)
     my_tree.insert(16)
 
-    print(BFS(my_tree, 9))
-    print(BFS(my_tree, 6))
-    print(BFS(my_tree, 16))
+    # print(BFS(my_tree, 9))
+    # print(BFS(my_tree, 6))
+    # print(BFS(my_tree, 16))
+
+    print(BFS_Flatten_Tree(my_tree))
+
+#             9
+#         5         10
+#    3                   11
+#                               15
+#                                        16
