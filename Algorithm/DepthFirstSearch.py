@@ -42,6 +42,20 @@ def DFSPostOrder(tree):
     return temp
 
 
+def DFSInOrder(tree):
+    temp = []
+
+    def traverse(node):
+        if node.left is not None:
+            traverse(node.left)
+        temp.append(node.value)
+        if node.right is not None:
+            traverse(node.right)
+
+    traverse(tree.root)
+    return temp
+
+
 if __name__ == "__main__":
 
     my_tree = bst.BinarySearchTree()
@@ -54,13 +68,14 @@ if __name__ == "__main__":
     my_tree.insert(16)
     my_tree.insert(1)
     my_tree.insert(14)
+    my_tree.insert(4)
 
-    # print(DFSPreOrder(my_tree))
+    print(DFSPreOrder(my_tree))
     print(DFSPostOrder(my_tree))
+    print(DFSInOrder(my_tree))
 
 #             9
 #         5         10
 #    3                   11
-# 1                              15
-#                                        16
-#                                   14
+# 1      4                       15
+#                          14          16
